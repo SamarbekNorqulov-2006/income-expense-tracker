@@ -1,0 +1,156 @@
+Samarbek, [11.10.2026 7:41]
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QashFlow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="logo">Qash<span>Flow</span></div>
+
+        <nav class="navigation">
+            <a href="#dashboard" data-uz="Bosh sahifa" data-ru="Главная" data-en="Dashboard">Bosh sahifa</a>
+            <a href="#accounts" data-uz="Hisoblar" data-ru="Счета" data-en="Accounts">Hisoblar</a>
+            <a href="#analytics" data-uz="Tahlil" data-ru="Аналитика" data-en="Analytics">Tahlil</a>
+            <a href="#transactions" data-uz="Operatsiyalar" data-ru="Операции" data-en="Transactions">Operatsiyalar</a>
+            <a href="#types" data-uz="Kategoriyalar" data-ru="Категории" data-en="Categories">Kategoriyalar</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <h1>QashFlow</h1>
+
+            <select id="languageSelect">
+                <option value="uz">O‘zbekcha</option>
+                <option value="ru">Русский</option>
+                <option value="en">English</option>
+            </select>
+
+            <button id="refreshBtn" type="button">↻ Yangilash</button>
+            <button id="addTransactionBtn" type="button">+ Operatsiya</button>
+        </header>
+
+        <!-- LOGIN OYNASI -->
+        <section id="loginPanel" class="panel">
+            <h2>QashFlow — Tizimga kirish</h2>
+
+            <form id="loginForm">
+                <label for="loginUsername">Login</label>
+                <input
+                    id="loginUsername"
+                    type="text"
+                    name="username"
+                    placeholder="Loginni kiriting"
+                    autocomplete="username"
+                    required
+                >
+
+                <label for="loginPassword">Parol</label>
+                <input
+                    id="loginPassword"
+                    type="password"
+                    name="password"
+                    placeholder="Parolni kiriting"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button type="submit">Kirish</button>
+            </form>
+
+            <p id="loginMessage"></p>
+
+            <button id="logoutBtn" type="button">Chiqish</button>
+        </section>
+
+        <p id="apiStatus">Server tekshirilmoqda...</p>
+
+        <!-- ASOSIY KO‘RSATKICHLAR -->
+        <section id="dashboard" class="stats-grid">
+            <article class="stat-card">
+                <p>Umumiy balans</p>
+                <h2 id="totalBalance">0 UZS</h2>
+            </article>
+
+            <article class="stat-card">
+                <p>Jami kirim</p>
+                <h2 id="totalIncome">0 UZS</h2>
+            </article>
+
+            <article class="stat-card">
+                <p>Jami chiqim</p>
+                <h2 id="totalExpense">0 UZS</h2>
+            </article>
+
+            <article class="stat-card">
+                <p>Hisoblar</p>
+                <h2 id="totalAccounts">0</h2>
+            </article>
+        </section>
+
+        <!-- TAHLIL -->
+        <section id="analytics" class="panel">
+            <h2>Daromad va xarajatlar</h2>
+            <div id="incomeExpenseChart">Grafik</div>
+            <div id="expenseChart">Xarajatlar taqsimoti</div>
+        </section>
+
+        <!-- HISOBLAR -->
+        <section id="accounts" class="panel">
+            <h2>Hisoblarim</h2>
+            <button id="addAccountBtn" type="button">+ Hisob qo‘shish</button>
+            <div id="accountsList"></div>
+        </section>
+
+        <!-- OPERATSIYALAR -->
+        <section id="transactions" class="panel">
+            <h2>Operatsiyalar</h2>
+
+            <select id="transactionFilter">
+                <option value="all">Barchasi</option>
+                <option value="income">Kirim</option>
+                <option value="expense">Chiqim</option>
+            </select>
+
+Samarbek, [11.10.2026 7:41]
+<table>
+                <thead>
+                    <tr>
+                        <th>Nomi</th>
+                        <th>Kategoriya</th>
+                        <th>Hisob</th>
+                        <th>Sana</th>
+                        <th>Summa</th>
+                        <th>Amallar</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionsTable"></tbody>
+            </table>
+        </section>
+
+        <!-- KATEGORIYALAR -->
+        <section id="types" class="panel">
+            <h2>Kategoriyalar</h2>
+
+            <h3>Daromad turlari</h3>
+            <div id="incomeTypesList"></div>
+
+            <h3>Xarajat turlari</h3>
+            <div id="expenseTypesList"></div>
+        </section>
+
+        <div id="modalRoot"></div>
+
+    </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
